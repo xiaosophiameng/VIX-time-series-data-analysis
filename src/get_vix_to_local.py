@@ -10,10 +10,10 @@ import os
 #main function
 url = 'http://www.cboe.com/publish/scheduledtask/mktdata/datahouse/vixcurrent.csv'
 response = urllib.request.urlopen(url)
-data = response.read()
+data = response.read().decode('UTF-8')
+data = '\n'.join(data.split('\n')[1:])
 
 #output file
 output_file_directory = os.path.join(os.pardir, 'data', 'vix_data.csv')
-print(output_file_directory)
-with open(output_file_directory,'wb') as output:
+with open(output_file_directory,'w') as output:
     output.write(data)
