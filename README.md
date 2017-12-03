@@ -15,6 +15,8 @@ Project: Milestone 1
 
 Explanation of VIX: VIX is an index which shows the market's expectation of 30-day volatility for the Chicago Board Options Exchange (CBOE)
 
+Users can run the file `git_vix_to_local.py` in the `src` folder to get the vix index from the public website and output it as a csv file into your local `data` folder. 
+
 
 ## Identify a Question
 
