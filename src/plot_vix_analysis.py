@@ -5,6 +5,7 @@ import numpy
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import argparse
+import pylab
 parser = argparse.ArgumentParser()
 parser.add_argument('src')
 parser.add_argument('dst')
@@ -26,9 +27,9 @@ def main():
 
     fig = plt.figure()
     plt.plot(interval, corrcoef, 'ro')
-    pp = PdfPages(os.path.join(os.pardir, dst) + '.pdf')
-    pp.savefig(fig)
-    pp.close()
+    #pp = PdfPages(os.path.join(os.pardir, dst) + '.pdf')
+    pylab.savefig(os.path.join(os.pardir, dst) + '.png')
+    #pp.close()
 
 # call main function
 if __name__ == "__main__":
