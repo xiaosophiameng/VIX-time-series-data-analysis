@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import argparse
 import pylab
+
 parser = argparse.ArgumentParser()
 parser.add_argument('src')
 parser.add_argument('dst')
@@ -26,10 +27,17 @@ def main():
     corrcoef = numpy.array([float(c) for c in corrcoef[1:]])
 
     fig = plt.figure()
-    plt.plot(interval, corrcoef, 'ro')
-    #pp = PdfPages(os.path.join(os.pardir, dst) + '.pdf')
+    plt.bar(interval, corrcoef, width=0.5,color="blue")
+    plt.axes()
+    ax = fig.add_subplot(1, 1, 1)
+    plt.yticks(numpy.arange(-0.25,0,0.05))
+    plt.xticks(numpy.arange(1,21,1))
+    ax.xaxis.set_ticks_position("top")
+    plt.ylabel("VIX Autocorrelation Coefficient")
+    plt.xlabel("Time Horizon")
+    plt.title('VIX Prediction',y=1.08,fontweight="bold")
     pylab.savefig(os.path.join(os.pardir, dst) + '.png')
-    #pp.close()
+
 
 # call main function
 if __name__ == "__main__":
