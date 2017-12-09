@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Written by Sophia Wang
+# Date： 2017-12-07
 # Get data from CBOE VIX csv file to data directory
 # http://www.cboe.com/publish/scheduledtask/mktdata/datahouse/vixcurrent.csv
 
@@ -17,6 +19,7 @@ def main():
     url = args.url
     dst = args.dst
 
+    #input file
     response = urllib.request.urlopen(url)
     data = response.read().decode('UTF-8')
     data = '\n'.join(data.split('\n')[1:])
