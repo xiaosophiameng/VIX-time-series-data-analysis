@@ -46,7 +46,7 @@ def main():
 
     with open(os.path.join(os.pardir, dst), 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(['VIX diff interval', 'T and T-1 diff correlation coefficient'])
+        csvwriter.writerow(['VIX diff interval', 'correlation coefficient'])
         for i in range(len(interval_list)):
             csvwriter.writerow([interval_list[i], corrcoef_list[i]])
 

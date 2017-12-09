@@ -34,7 +34,7 @@ def main():
     plt.xticks(numpy.arange(1,21,1))
     ax.xaxis.set_ticks_position("top")
     plt.ylabel("VIX Autocorrelation Coefficient")
-    plt.xlabel("Time Horizon")
+    plt.xlabel("Time Interval")
     plt.title('VIX Prediction',y=1.08,fontweight="bold")
     pylab.savefig(os.path.join(os.pardir, dst) + '.png')
 
