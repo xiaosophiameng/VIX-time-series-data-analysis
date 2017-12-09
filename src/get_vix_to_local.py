@@ -6,18 +6,26 @@
 # libraries/packages used
 import urllib.request
 import os
-import sys
-
-url = sys.argv[1]
-dst = sys.argv[2]
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('url')
+parser.add_argument('dst')
+args = parser.parse_args()
 
 #main function
-#url = 'http://www.cboe.com/publish/scheduledtask/mktdata/datahouse/vixcurrent.csv'
-response = urllib.request.urlopen(url)
-data = response.read().decode('UTF-8')
-data = '\n'.join(data.split('\n')[1:])
+def main():
+    url = args.url
+    dst = args.dst
 
-#output file
-output_file_directory = os.path.join(os.pardir, dst)
-with open(output_file_directory,'w') as output:
-    output.write(data)
+    response = urllib.request.urlopen(url)
+    data = response.read().decode('UTF-8')
+    data = '\n'.join(data.split('\n')[1:])
+
+    #output file
+    output_file_directory = os.path.join(os.pardir, dst)
+    with open(output_file_directory,'w') as output:
+        output.write(data)
+
+# call main function
+if __name__ == "__main__":
+    main()
