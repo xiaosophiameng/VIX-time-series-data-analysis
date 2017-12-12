@@ -22,7 +22,7 @@ def main():
     vix_close = []
     dte = []
     # input file
-    with open(os.path.join(os.pardir, src)) as csvfile:
+    with open(os.path.join(src)) as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
             vix_close.append(row[4])
@@ -52,7 +52,7 @@ def main():
         interval_list.append(interval)
         corrcoef_list.append(corrcoef)
     # output file
-    with open(os.path.join(os.pardir, dst), 'w') as csvfile:
+    with open(os.path.join(dst), 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(['VIX diff interval', 'correlation coefficient'])
         for i in range(len(interval_list)):
