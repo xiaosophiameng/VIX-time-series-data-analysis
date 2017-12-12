@@ -1,4 +1,5 @@
 # make all the following files with running this mike
+# using "make all" in the terminal
 all: data/vix_data.csv results/vix_analysis.csv results/vix_analysis_plot
 
 # download data from website by running the get_vix_to_local.py script in src
