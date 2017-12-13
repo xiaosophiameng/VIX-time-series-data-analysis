@@ -25,7 +25,7 @@ def main():
     data = '\n'.join(data.split('\n')[1:])
 
     #output file
-    output_file_directory = os.path.join(dst)
+    output_file_directory = dst
     with open(output_file_directory,'w') as output:
         output.write(data)
 

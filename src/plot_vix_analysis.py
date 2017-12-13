@@ -18,7 +18,7 @@ def main():
     dst = args.dst
     interval = []
     corrcoef = []
-    with open(os.path.join(src)) as csvfile:
+    with open (src) as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
             interval.append(row[0])
@@ -36,7 +36,7 @@ def main():
     plt.ylabel("VIX Autocorrelation Coefficient")
     plt.xlabel("Time Interval")
     plt.title('VIX Prediction',y=1.08,fontweight="bold")
-    pylab.savefig(os.path.join(dst) + '.png')
+    pylab.savefig(dst + '.png')
 
 
 # call main function
