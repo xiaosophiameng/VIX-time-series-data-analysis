@@ -6,8 +6,8 @@ output: pdf_document
 ---
 
 ```{r, echo = FALSE, results='hide',message=FALSE}
-library(knitr)
-library(dplyr)
+#library(knitr)
+#library(dplyr)
 ```
 
 ## Introduction
@@ -21,8 +21,8 @@ The data resource of vix index is from the website http://www.cboe.com/. The fir
 
 ```{r,echo = FALSE}
 vix_data <- read.csv("../data/vix_data.csv")
-vix_data_head <- vix_data %>% head()
-kable(vix_data_head)
+(vix_data_head <- head(vix_data))
+#kable(vix_data_head)
 ```
 
 ## Data Analysis and Visualization
@@ -31,7 +31,8 @@ To see whether the vix index is predictable by itself, I based on the 10 years' 
 
 ```{r,echo = FALSE}
 vix_data <- read.csv("../results/vix_analysis.csv")
-kable(vix_data)
+vix_data
+#kable(vix_data)
 ```
 
 [vix_analysis_plot.png](../results/vix_analysis_plot.png)
