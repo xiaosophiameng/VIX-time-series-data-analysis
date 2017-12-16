@@ -31,21 +31,21 @@ ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
 
 # Environment
-RUN conda create -n docker-test python=3.6
-RUN /bin/bash -c "source activate docker-test"
+RUN conda create -n docker-vix-analysis python=3.6
+RUN /bin/bash -c "source activate docker-vix-analysis"
 # Install packages
 RUN conda install anaconda numpy
 # RUN conda install anaconda argparse
 RUN conda install -c conda-forge matplotlib
 
-#
-RUN mkdir docker-test
-ADD . /docker-test
-#ADD src/get_vix_to_local.py /docker-test
-#ADD src/vix_analysis.py /docker-test
-#ADD src/plot_vix_analysis.py /docker-test
-#ADD Makefile /docker-test
-WORKDIR "docker-test"
+# Run scripts
+RUN mkdir docker-vix-analysis
+ADD . /docker-vix-analysis
+#ADD src/get_vix_to_local.py /docker-vix-analysis
+#ADD src/vix_analysis.py /docker-vix-analysis
+#ADD src/plot_vix_analysis.py /docker-vix-analysis
+#ADD Makefile /docker-vix-analysis
+WORKDIR "docker-vix-analysis"
 #RUN mkdir data
 #RUN pip install numpy
 #RUN pip install argparse
