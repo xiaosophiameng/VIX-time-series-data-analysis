@@ -1,9 +1,8 @@
----
 Title: VIX Analysis
 
 Author: Xiaomeng Wang (Sophia)
 
-Date: Decmber 10, 2017
+Date: December 10, 2017
 
 Project: Milestone 3
 
@@ -21,21 +20,22 @@ To see whether the vix index is predictable by itself, I based on the 10 years' 
 
 ## Usage
 
-#### How to use make file
+#### How to use makefile
 
 To run the full analysis and run the `makefile`, open the command line/terminal/Git bash and follow the steps below:
 
 1. Use command `cd` to change the current directory to the project root directory
 2. Use command `atom Makefile` to access the make file
 3. Use command `make all` to run all the scripts
-	- If you need to re-run the make file for any purpose, use command `make clean` first to delete all the outout files; then use command `make all` to finish re-running
+	- If you need to re-run the makefile for any purpose, use command `make clean` first to delete all the output files; then use command `make all` to finish re-running
 
-#### How to use docker file
+#### How to use dockerfile
 
 To use the `makefile`, open the command line/terminal/Git bash and follow the steps below:
 
 1. Use command `docker pull xiaosophiameng/vix-time-series-data-analysis-final` to download the docker container to your local drive
 2. Use command `docker build -t docker-vix-analysis .`to build docker
-3. Use command `docker run -v /Users/xiaomengwang/documents/522_milestone/VIX-time-series-data-analysis:/docker-vix-analysis docker-vix-analysis make all` to run build enviroment, install all related packages and run all the scripts
+3. Use command `docker run -v /Users/xiaomengwang/documents/522_milestone/VIX-time-series-data-analysis:/docker-vix-analysis docker-vix-analysis make all` to run build environment, install all related packages and run all the scripts
  - Note: On the left hand side of the : is the path on your own computer. On the right hand side of the : is the path on the container. This should almost always start with /home/rstudio/.
 4. In case you want to clean up your make file, use command `docker run -v /Users/xiaomengwang/documents/522_milestone/VIX-time-series-data-analysis:/docker-vix-analysis docker-vix-analysis clean`
+
