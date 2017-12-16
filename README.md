@@ -1,40 +1,41 @@
 ---
+Title: VIX Analysis
+
 Author: Xiaomeng Wang (Sophia)
 
 Date: Decmber 10, 2017
 
-Project: Milestone 2
+Project: Milestone 3
 
 ---
 
 
 
-## Summry of the project
+## Summary of the project
 
-VIX is an index which shows the market's expectation of 30-day volatility for the Chicago Board Options Exchange (CBOE). The project aims to find out whether the trend of vix index is preditable. 
+VIX is an index which shows the market's expectation of 30-day volatility for the Chicago Board Options Exchange (CBOE). The project aims to find out whether the trend of vix index is predictable. 
 
-To see whether the vix index is predictable by itself, I based on the 10 years' vix index (from January 1st, 2007 to January 1st, 2017) and calculated the auto-correlation coefficients between time T and time T+1, where T ranges from 1-day period to 20-day period. According to the derived results, for the 10-year time horizon, all the auto-correlation coefficients are negative from 1-day period to 20-day period. Thus, we can conclude that the trend of vix index is preditable by itself and the value of the vix index is negatively correlated with its short term return.
+To see whether the vix index is predictable by itself, I based on the 10 years' vix index (from January 1st, 2007 to January 1st, 2017) and calculated the auto-correlation coefficients between time T and time T+1, where T ranges from 1-day period to 20-day period. According to the derived results, for the 10-year time horizon, all the autocorrelation coefficients are negative from 1-day period to 20-day period. Thus, we can conclude that the trend of vix index is predictable by itself and the value of the vix index is negatively correlated with its short term return.
 
-## How to run my data analysis
 
-#### Order scripts are run in
 
-Here is the order to run my scripts:
+## Usage
 
-- 1. get_vix_to_local.py
-- 2. vix_analysis.py
-- 3. plot_vix_analysis.py
+#### How to use make file
 
-#### Expected inputs for each script
+To run the full analysis and run the `makefile`, open the command line/terminal/Git bash and follow the steps below:
 
-- Inputs for script `get_vix_to_local.py`: 
-	- http://www.cboe.com/publish/scheduledtask/mktdata/datahouse/vixcurrent.csv 
-	- data/vix_data.csv
-- Inputs for script vix_analysis.py: 
-	- data/vix_data.csv 
-	- results/vix_analysis.csv
-- Inputs for script plot_vix_analysis.py: 
-	- results/vix_analysis.csv 
-	- results/vix_analysis_plot
+1. Use command `cd` to change the current directory to the project root directory
+2. Use command `atom Makefile` to access the make file
+3. Use command `make all` to run all the scripts
+	- If you need to re-run the make file for any purpose, use command `make clean` first to delete all the outout files; then use command `make all` to finish re-running
 
-Note: A runall.sh file is included in the directory for users to run all my scripts together
+#### How to use docker file
+
+To use the `makefile`, open the command line/terminal/Git bash and follow the steps below:
+
+1. Use command `docker pull xiaosophiameng/vix-time-series-data-analysis-final` to download the docker container to your local drive
+2. Use command `docker build -t docker-vix-analysis .`to build docker
+3. Use command `docker run -v /Users/xiaomengwang/documents/522_milestone/VIX-time-series-data-analysis:/docker-vix-analysis docker-vix-analysis make all` to run build enviroment, install all related packages and run all the scripts
+ - Note: On the left hand side of the : is the path on your own computer. On the right hand side of the : is the path on the container. This should almost always start with /home/rstudio/.
+4. In case you want to clean up your make file, use command `docker run -v /Users/xiaomengwang/documents/522_milestone/VIX-time-series-data-analysis:/docker-vix-analysis docker-vix-analysis clean`
