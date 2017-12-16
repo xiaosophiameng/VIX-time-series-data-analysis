@@ -30,11 +30,11 @@ results/vix_analysis_plot.png: src/plot_vix_analysis.py results/vix_analysis.csv
 
 # create final report in doc folder
 doc/vix_report.md: src/vix_report.rmd data/vix_data.csv results/vix_analysis.csv results/vix_analysis_plot.png
-		Rscript -e "ezknitr::ezknit('src/vix_report.rmd', out_dir = 'doc')"
+	Rscript -e "ezknitr::ezknit('src/vix_report.rmd', out_dir = 'doc')"
 
 # clean up intermediate files
 clean:
 	rm -f data/vix_data.csv
-  rm -f results/vix_analysis.csv
- 	rm -f results/vix_analysis_plot.png
- 	rm -f doc/vix_report.md doc/vix_report.html
+	rm -f results/vix_analysis.csv
+	rm -f results/vix_analysis_plot.png
+	rm -f doc/vix_report.md doc/vix_report.html

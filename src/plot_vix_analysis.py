@@ -1,4 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env pythonT
+
+# Written by Sophia Wang
+# Date： 2017-12-07
+# Plot vix autocorrelation chart
+
+# libraries/packages used
 import os
 import csv
 import numpy
@@ -9,17 +15,20 @@ from matplotlib.backends.backend_pdf import PdfPages
 import argparse
 import pylab
 
+# define argument
 parser = argparse.ArgumentParser()
 parser.add_argument('src')
 parser.add_argument('dst')
 args = parser.parse_args()
 
-#main function
+# main function
+# plot vix autocorrelation
 def main():
     src = args.src
     dst = args.dst
     interval = []
     corrcoef = []
+    # input file
     with open (src) as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
@@ -27,7 +36,7 @@ def main():
             corrcoef.append(row[1])
     interval = numpy.array([float(i) for i in interval[1:]])
     corrcoef = numpy.array([float(c) for c in corrcoef[1:]])
-
+    # output png file
     fig = plt.figure()
     plt.bar(interval, corrcoef, width=0.5,color="blue")
     plt.axes()

@@ -2,7 +2,7 @@
 
 # Written by Sophia Wang
 # Date： 2017-12-07
-# Conduct analysis and computations
+# Conduct vix analysis by calculating autocorrelation
 
 # libraries/packages used
 import os
