@@ -1,5 +1,14 @@
-FROM python:3
+# use rocker/tidyverse as the base image
+FROM rocker/tidyverse
 
+# get OS updates and install build tools
+RUN apt-get update
+RUN apt-get install -y build-essential
+
+# then install the ezknitr packages
+RUN Rscript -e "install.packages('ezknitr', repos = 'http://cran.us.r-project.org')"
+
+# install conda
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion
@@ -29,6 +38,7 @@ RUN conda install anaconda numpy
 # RUN conda install anaconda argparse
 RUN conda install -c conda-forge matplotlib
 
+#
 RUN mkdir docker-test
 ADD . /docker-test
 #ADD src/get_vix_to_local.py /docker-test
