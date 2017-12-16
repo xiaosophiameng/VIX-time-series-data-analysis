@@ -1,10 +1,10 @@
 # Driver script
 # Xiaomeng(Sophia) Wang, Dec 2017
 
-# Usage: make all
+# Usage: run all the scripts together and make all the associated output
 
-# make all the following files with running this mike
-# using "make all" in the terminal
+# make all the following files with running this makefile
+# using "make all"
 all: doc/vix_report.md
 #all: data/vix_data.csv results/vix_analysis.csv results/vix_analysis_plot.png
 
@@ -32,8 +32,8 @@ results/vix_analysis_plot.png: src/plot_vix_analysis.py results/vix_analysis.csv
 doc/vix_report.md: src/vix_report.rmd data/vix_data.csv results/vix_analysis.csv results/vix_analysis_plot.png
 		Rscript -e "ezknitr::ezknit('src/vix_report.rmd', out_dir = 'doc')"
 # clean up intermediate files
-clean:
-	rm -f data/vix_data.csv
-	rm -f results/vix_analysis.csv
-	rm -f results/vix_analysis_plot.png
-	rm -f doc/vix_report.md doc/vix_report.html
+# clean:
+# 	rm -f data/vix_data.csv
+# 	rm -f results/vix_analysis.csv
+# 	rm -f results/vix_analysis_plot.png
+# 	rm -f doc/vix_report.md doc/vix_report.html

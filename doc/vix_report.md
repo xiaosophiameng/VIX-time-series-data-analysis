@@ -27,11 +27,7 @@ The data resource of vix index is from the website http://www.cboe.com/. The fir
 ```
 
 ```
-## Error in eval(lhs, parent, parent): object 'vix_data' not found
-```
-
-```
-## Error in inherits(x, "list"): object 'vix_data_head' not found
+## Error in head(vix_data): object 'vix_data' not found
 ```
 
 ## Data Analysis and Visualization
@@ -49,7 +45,7 @@ To see whether the vix index is predictable by itself, I based on the 10 years' 
 ```
 
 ```
-## Error in kable(vix_data): object 'vix_data' not found
+## Error in eval(expr, envir, enclos): object 'vix_data' not found
 ```
 
 [vix_analysis_plot.png](../results/vix_analysis_plot.png)

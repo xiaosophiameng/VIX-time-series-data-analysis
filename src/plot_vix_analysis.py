@@ -2,6 +2,8 @@
 import os
 import csv
 import numpy
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import argparse
