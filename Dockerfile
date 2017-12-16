@@ -1,4 +1,4 @@
-# Dockerfile
+# Dockerfile for vix analysis
 # Xiaomeng(Sophia) Wang, Dec 2017
 
 # Usage: The dockerfile is to build a docker image.
@@ -8,12 +8,15 @@
 # use rocker/tidyverse as the base image
 FROM rocker/tidyverse
 
+
 # get OS updates and install build tools
 RUN apt-get update
 RUN apt-get install -y build-essential
 
-# then install the ezknitr packages
+
+# install the ezknitr packages
 RUN Rscript -e "install.packages('ezknitr', repos = 'http://cran.us.r-project.org')"
+
 
 # install conda
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
@@ -37,39 +40,17 @@ ENV PATH /opt/conda/bin:$PATH
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
 
-# Environment
-# RUN conda create -n docker-vix-analysis python=3.6
-# RUN /bin/bash -c "source activate docker-vix-analysis"
-# Install packages
-# RUN conda install anaconda numpy
-# RUN conda install anaconda argparse
-# RUN conda install -c conda-forge matplotlib
-# RUN conda install nbformat
 
-# Run scripts
+# open the docker container
 RUN mkdir docker-vix-analysis
 ADD . /docker-vix-analysis
-#ADD src/get_vix_to_local.py /docker-vix-analysis
-#ADD src/vix_analysis.py /docker-vix-analysis
-#ADD src/plot_vix_analysis.py /docker-vix-analysis
-#ADD Makefile /docker-vix-analysis
 WORKDIR "docker-vix-analysis"
 
+# Create Environment with environment.yml
 RUN conda install nbformat
 RUN conda install -c conda-forge ca-certificates
 CMD ["conda", "env", "create", "-f", "environment.yml"]
 #RUN conda env create -f "environment.yml"
 
-#RUN mkdir data
-#RUN pip install numpy
-#RUN pip install argparse
-#RUN pip install matplotlib
-# COPY data/ /data/
-# CMD [ "python", "src/get_vix_to_local.py", "data/vix_data.csv"]
-# RUN python src/get_vix_to_local.py data/vix_data.csv
-# CMD [ "make", "all"]
-# RUN make all
-# CMD [ "make", "data/vix_data.csv" ]
-# RUN make -f data/vix_data.csv
-
+# deactive source
 RUN /bin/bash -c "source deactivate"
